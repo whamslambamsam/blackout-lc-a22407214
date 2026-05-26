@@ -7,8 +7,12 @@ namespace Blackout
     {
         private static void Main(string[] args)
         {
-            View difficulty = new View();
-            difficulty.DifficultySelect();
+            View viewer = new View();
+            Controller control = new Controller();
+
+            viewer.DifficultySelect();
+            control.GridBuilder();
+            viewer.Load();
         }
     }
 }
