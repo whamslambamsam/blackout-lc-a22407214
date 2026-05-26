@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Serialization;
 using Spectre.Console;
 
 namespace Blackout
@@ -28,8 +29,14 @@ namespace Blackout
             
             AnsiConsole.MarkupLine($"[blue]Difficulty chosen:[/] {choice}");
             // Green square - U+1F7E9; White square - U+2B1C; Yellow square - U+1F7E8;
-
+            
             return choice;
+        }
+
+        public string ReturnChoice()
+        {
+            string input = DifficultySelect();
+            return input;
         }
     }
 }
