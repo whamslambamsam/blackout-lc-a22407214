@@ -8,33 +8,18 @@ namespace Blackout
 {
     public class Controller
     {
-        readonly View view = new View();
-        public (int, int) GridBuilder()
+        /// Foi usado AI para dar debug e concertar um erro com looping de inputs
+        /// A lógica e concepção foi feita por nós, apenas foi usado Inteligência
+        /// Artificial para evitar o erro.
+        public (int, int) GridBuilder(string choice, View view)
         {
-            if (view.DifficultySelect() == "[green]Easy[/]")
+            return choice switch
             {
-                return (3, 3); 
-            }
-
-            else if (view.DifficultySelect() == "[yellow]Medium[/]")
-            {
-                return (5, 5);
-            }
-
-            else if (view.DifficultySelect() == "[red]Hard[/]")
-            {
-                return (8, 8);
-            }
-
-            else if (view.DifficultySelect() == "Custom")
-            {
-                int r = view.RequestRow();
-                int c = view.RequestColumn();
-                return (r, c);
-            }
-
-            var (rows, columns) = GridBuilder();
-            return (rows, columns);
-        } 
+                "[green]Easy[/]" => (3, 3),
+                "[yellow]Medium[/]" => (5, 5),
+                "[red]Hard[/]" => (8, 8),
+                "Custom" => (view.RequestRow(), view.RequestColumn()),
+            };
+        }
     }
 }

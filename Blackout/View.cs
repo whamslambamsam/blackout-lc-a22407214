@@ -52,24 +52,17 @@ namespace Blackout
             return column;
         }
 
-        public void Load()
+        public void Load(int rows, int columns)
         {
-            Controller controller = new Controller();
-
-            var (rows, columns) = controller.GridBuilder();
-            
             AnsiConsole.Status()
                 .Spinner(Spinner.Known.Dots)
                 .Start("Processing...", ctx =>
                 {
                     Thread.Sleep(1000);
-
                     ctx.Status($"Rows selected: {rows}");
                     Thread.Sleep(1500);
-
                     ctx.Status($"Columns selected: {columns}");
                     Thread.Sleep(1500);
-
                     ctx.Status("Generating...");
                     Thread.Sleep(2000);
                 });

@@ -10,9 +10,10 @@ namespace Blackout
             View viewer = new View();
             Controller control = new Controller();
 
-            viewer.DifficultySelect();
-            control.GridBuilder();
-            viewer.Load();
+            var choice = viewer.DifficultySelect();
+            var (rows, cols) = control.GridBuilder(choice, viewer);
+
+            viewer.Load(rows, cols);
         }
     }
 }
