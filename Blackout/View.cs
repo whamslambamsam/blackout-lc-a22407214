@@ -23,23 +23,17 @@ namespace Blackout
 
             var choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
-                    .Title("[blue]Select difficulty:[/] ")
+                    .Title("\n[blue]Select difficulty:[/] ")
                     .AddChoices("[green]Easy[/]", 
                     "[yellow]Medium[/]", 
                     "[red]Hard[/]", 
                     "Custom")
                     );
             
-            AnsiConsole.MarkupLine($"[blue]Difficulty chosen:[/] {choice}");
+            AnsiConsole.MarkupLine($"\n[blue]Difficulty chosen:[/] {choice}");
             // Green square - U+1F7E9; White square - U+2B1C; Yellow square - U+1F7E8;
 
             return choice;
-        }
-
-        public string ReturnChoice()
-        {
-            string input = DifficultySelect();
-            return input;
         }
 
         public int RequestRow()
