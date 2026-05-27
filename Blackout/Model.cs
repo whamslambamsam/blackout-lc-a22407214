@@ -10,7 +10,7 @@ namespace Blackout
     public class Model
     {
         /// <summary>
-        /// Metodo usado para criar a grid
+        /// Método usado para criar a grid
         /// dependendo da dificuldade que o jogador selecionou.
         /// </summary>
         /// <param name="length">
@@ -20,10 +20,10 @@ namespace Blackout
         /// Altura total da grid.
         /// </param>
         /// <returns>
-        /// As dimenções da grid criada para o jogador.
+        /// As dimensões da grid criada para o jogador.
         /// </returns>
         /// <remarks>
-        /// Foi usado AI para perceber como é que poderi-se fazer as grids.
+        /// Foi usado AI para perceber como é que poderiamos fazer as grids.
         /// </remarks>
         public bool[,] GridSize(int length, int width)
         {
