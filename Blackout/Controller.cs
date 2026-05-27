@@ -91,13 +91,44 @@ namespace Blackout
             return (inputX, inputY);
         }
 
-        public (int, int) FlipCell(bool[,] size, (int, int) cursor)
+        // IA vvv
+        void Toggle(bool[,] grid, int x, int y)
         {
-            int cursorX = cursor.Item1;
-            int cursorY = cursor.Item2;
+            grid[x, y] = !grid[x, y];
         }
 
-        public (int, int) HandleInput((int, int) cursor)
+        public void FlipCell(bool[,] size, (int, int) cursor)
+        {
+            int length = size.GetLength(0);
+            int width = size.GetLength(1);
+            
+            int cursorX = cursor.Item1;
+            int cursorY = cursor.Item2;
+
+            Toggle(size, cursorX, cursorY);
+
+            if (cursorX > 0) 
+            {
+                Toggle(size, cursorX - 1, cursorY);
+            }
+
+            if (cursorX < length - 1) 
+            {
+                Toggle(size, cursorX + 1, cursorY);
+            }
+
+            if (cursorY > 0)
+            {
+                Toggle(size, cursorX, cursorY - 1);
+            }
+
+            if (cursorY < width - 1)
+            { 
+                Toggle(size, cursorX, cursorY + 1);
+            }
+        }
+
+        public (int, int) HandleInput(bool[,] size, (int, int) cursor)
         {
             int cursorX = cursor.Item1;
             int cursorY = cursor.Item2;
@@ -122,12 +153,31 @@ namespace Blackout
                     cursorY++;
                     break;
                 
-                case ConsoleKey.Spacebar:
-                    FlipCell();
+                case ConsoleKey.Enter:
+                    FlipCell(size, cursor);
                     break;
             }
 
             return (cursorX, cursorY);
+        }
+
+        public bool CheckWin(bool[,] size)
+        {
+            int length = size.GetLength(0);
+            int width = size.GetLength(1);
+
+            for (int x = 0; x < length; x++)
+            {
+                for (int y = 0; y < width; y++)
+                {
+                    if (size[x, y])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }
