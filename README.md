@@ -97,8 +97,8 @@ Biblioteca usada: Spectre.Console
 
 Em Program.cs: (Main) While loop e HandleInput foram debugged com a ajuda de IA.
 
-Em View.cs: (GridDraw) Ai foi usado para saber como ler valores nas grids e saber como "desenhar" grids.
+Em View.cs: (GridDraw) IA foi usada para saber como ler valores nas grids e saber como "desenhar" grids.
 
-Em Model.cs: (GridSize) Foi usado AI para perceber como é que se poderia fazer as grids.
+Em Model.cs: (GridSize) Foi usado IA para perceber como é que se poderia fazer as grids.
 
-Em Controller.cs: (GridBuilder) Foi usado AI para dar debug e concertar um erro com looping de inputs. A lógica e concepção foi feita por nós, apenas foi usado Inteligência Artificial para evitar o erro. (SquareAssort) Ai foi usado para saber como ler valores nas grids e randomizar quais as cellulas da grid ficam ativas. (Toggle) Ai foi usado para perceber como mostrar uma celula desativada.
+Em Controller.cs: (GridBuilder) Foi usada IA para dar debug e concertar um erro com looping de inputs. A lógica e concepção foi feita por nós, apenas foi usada Inteligência Artificial para evitar o erro. (SquareAssort) IA foi usada para saber como ler valores nas grids e randomizar quais as celulas da grid ficam ativas. (Toggle) IA foi usada para perceber como mostrar uma celula desativada.
