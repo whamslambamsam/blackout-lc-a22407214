@@ -12,6 +12,13 @@ namespace Blackout
 {
     public class View
     {
+        /// <summary>
+        /// Método para mostrar ao jogador as escolhas de dificuldades para jogar,
+        /// deixando-o selecionar a que deseja.
+        /// </summary>
+        /// <returns>
+        /// Retorna a escolha do jogador.
+        /// </returns>
         public string DifficultySelect()
         {
             Table table = new Table();
@@ -38,6 +45,9 @@ namespace Blackout
             return choice;
         }
 
+        /// <returns>
+        /// Retorna o numero de linhas.
+        /// </returns>
         public int RequestRow()
         {
             int rowNum = AnsiConsole.Ask<int>("Number of [blue]rows[/]?");
@@ -50,6 +60,9 @@ namespace Blackout
             return rowNum;
         }
 
+        /// <returns>
+        /// Retorna o numero de colunas.
+        /// </returns>
         public int RequestColumn()
         {
             int columnNum = AnsiConsole.Ask<int>("Number of [red]columns[/]?");
@@ -74,6 +87,16 @@ namespace Blackout
             return touch;
         }
 
+        /// <summary>
+        /// Método que mostra ao jogador a grid que selecionou
+        /// a ser criada em tempo real.
+        /// </summary>
+        /// <param name="rows">
+        /// Numero de linhas.
+        /// </param>
+        /// <param name="columns">
+        /// Numero de colunas.
+        /// </param>
         public void Load(int rows, int columns)
         {
             AnsiConsole.Status()
@@ -92,7 +115,26 @@ namespace Blackout
             AnsiConsole.MarkupLine("\n[green]Complete![/]");
         }
 
+<<<<<<< HEAD
         public void GridDraw(bool[,] size)
+=======
+        /// <summary>
+        /// Método que constroi a grid para o jogo.
+        /// </summary>
+        /// <param name="size">
+        /// Como o numero de colunas e linhas são o mesmo,
+        /// size é usado para obter ambos.
+        /// </param>
+        /// <returns>
+        /// Retorna o tamanho da grid
+        /// </returns>
+        /// <remarks>
+        /// Ai usado para:
+        /// saber como ler valores nas grids e
+        /// saber como "desenhar" grids
+        /// </remarks>
+        public bool GridDraw(bool[,] size)
+>>>>>>> ce325ae0d23bdb22654492b37f3f6581f5eeb643
         {
             int length = size.GetLength(0); // IA para saber como ler valores
             int width = size.GetLength(1); // das grids
