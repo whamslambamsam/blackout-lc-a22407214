@@ -36,5 +36,49 @@ namespace Blackout
                 "Custom" => (view.RequestRow(), view.RequestColumn()),
             };
         }
+
+        public int DifficultyTouch(string choice, View view)
+        {
+            return choice switch
+            {
+                "[green]Easy[/]" => 2,
+                "[yellow]Medium[/]" => 4,
+                "[red]Hard[/]" => 6,
+                "Custom" => view.RequestTouch(),
+            };
+        }
+
+        public void SquareAssort(bool[,] size, int touches)
+        {
+            Random rng = new Random();
+
+            int length = size.GetLength(0); // IA para saber como ler valores
+            int width = size.GetLength(1); // das grids
+
+            // Usado IA para saber como fazer os "touches" aleatórios
+            for (int i = 0; i < touches; i++)
+            {
+                int randCellX = rng.Next(length);
+                int randCellY = rng.Next(width);
+
+                size[randCellX, randCellY] = true;
+
+                if (randCellX > 0)
+                    size[randCellX - 1, randCellY] = 
+                        true;
+
+                if (randCellX < length - 1)
+                    size[randCellX + 1, randCellY] = 
+                        true;
+
+                if (randCellY > 0)
+                    size[randCellX, randCellY - 1] = 
+                        true;
+
+                if (randCellY < width - 1)
+                    size[randCellX, randCellY + 1] = 
+                        true;
+            }
+        }
     }
 }

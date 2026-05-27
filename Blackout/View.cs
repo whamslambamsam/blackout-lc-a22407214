@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Xml.Serialization;
@@ -49,7 +50,14 @@ namespace Blackout
         /// </returns>
         public int RequestRow()
         {
-            return AnsiConsole.Ask<int>("Number of [blue]rows[/]?");
+            int rowNum = AnsiConsole.Ask<int>("Number of [blue]rows[/]?");
+            while (rowNum <= 0)
+            {
+                AnsiConsole.MarkupLine("[red]Invalid value! -- Min. 1[/]");
+                rowNum = AnsiConsole.Ask<int>("Number of [blue]rows[/]?");
+            }
+            
+            return rowNum;
         }
 
         /// <returns>
@@ -57,7 +65,26 @@ namespace Blackout
         /// </returns>
         public int RequestColumn()
         {
-            return AnsiConsole.Ask<int>("Number of [red]columns[/]?");
+            int columnNum = AnsiConsole.Ask<int>("Number of [red]columns[/]?");
+            while (columnNum <= 0)
+            {
+                AnsiConsole.MarkupLine("[red]Invalid value! -- Min. 1[/]");
+                columnNum = AnsiConsole.Ask<int>("Number of [red]columns[/]?");
+            }
+
+            return columnNum;
+        }
+
+        public int RequestTouch()
+        {
+            var touchNum = AnsiConsole.Ask<int>("Number of [green]touches[/]?");
+            if(touchNum == 0)
+            {
+                AnsiConsole.MarkupLine("[yellow]Really?[/]");
+            }
+
+            int touch = touchNum;
+            return touch;
         }
 
         /// <summary>
@@ -85,7 +112,7 @@ namespace Blackout
                     Thread.Sleep(2000);
                 });
 
-            AnsiConsole.MarkupLine("[green]Complete![/]");
+            AnsiConsole.MarkupLine("\n[green]Complete![/]");
         }
 
         /// <summary>
@@ -103,7 +130,7 @@ namespace Blackout
         /// saber como ler valores nas grids e
         /// saber como "desenhar" grids
         /// </remarks>
-        public bool GridDraw(bool[,] size)
+        public void GridDraw(bool[,] size)
         {
             int length = size.GetLength(0); // IA para saber como ler valores
             int width = size.GetLength(1); // das grids
@@ -119,13 +146,18 @@ namespace Blackout
             {
                 for (int y = 0; y < width; y++)
                 {
+                    if (size[x, y])
+                    {
+                        Console.Write(cell + " ");
+                    }
+                    else
+                    {
                         Console.Write(blank + " ");
+                    }
                 }
 
                 Console.WriteLine();
             }
-
-            return size[0,0];
         }
     }
 }

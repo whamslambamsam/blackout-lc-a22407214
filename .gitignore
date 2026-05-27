@@ -3,6 +3,13 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# Scum of the earth, or something
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+
 # dotenv files
 .env
 
