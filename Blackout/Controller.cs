@@ -154,22 +154,55 @@ namespace Blackout
 
             if (cursorX > 0) 
             {
-                Toggle(size, cursorX - 1, cursorY);
+                Toggle(size, cursorX - 1, cursorY); // - para cima       
             }
 
             if (cursorX < length - 1) 
             {
                 Toggle(size, cursorX + 1, cursorY);
+                Toggle(size, cursorX + 1, cursorY + 1);
             }
 
             if (cursorY > 0)
             {
-                Toggle(size, cursorX, cursorY - 1);
+                Toggle(size, cursorX, cursorY - 1); // - para a esquerda
+                Toggle(size, cursorX - 1, cursorY - 1);
             }
 
             if (cursorY < width - 1)
             { 
                 Toggle(size, cursorX, cursorY + 1);
+                Toggle(size, cursorX + 1, cursorY + 1);
+            }
+
+            if (cursorX > 0 && cursorY > 0) 
+            {
+                Toggle(size, cursorX - 1, cursorY -1);            
+            }
+
+            if (cursorX < length - 1 && cursorY < width - 1) 
+            {
+                Toggle(size, cursorX + 1, cursorY + 1);
+            }
+
+            if (cursorX > 0 && cursorY < width - 1) 
+            {
+                Toggle(size, cursorX - 1, cursorY + 1);            
+            }
+
+            if (cursorX < length - 1 && cursorY > 0) 
+            {
+                Toggle(size, cursorX + 1, cursorY - 1);
+            }
+
+            if (cursorX > 0 && cursorY < width - 1) 
+            {
+                Toggle(size, cursorX - 1, cursorY + 1);            
+            }
+
+            if (cursorX < length - 1 && cursorY > 0) 
+            {
+                Toggle(size, cursorX + 1, cursorY - 1);
             }
         }
 
